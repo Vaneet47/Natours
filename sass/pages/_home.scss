@@ -13,4 +13,14 @@
     ),
     url(../img/nat-4.jpg);
   background-size: cover;
+  margin-top: -10rem;
+  //skewed design
+  transform: skewY(-7deg);
+  // selecting all direct childs of section feature
+
+  & > * {
+    transform: skewY(7deg);
+  }
 }
+
+//.section-feature * : will select all the children, not direct children.
