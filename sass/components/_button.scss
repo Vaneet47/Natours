@@ -1,0 +1,118 @@
+.btn {
+  /* :link is a pseudo-class, and pseudo-classes are a special state of a selector.
+  So this link here is a state of the button selector.
+  we use pseudo classes to style elements under a special condition.*/
+
+  /*visited: this is the state when the user has already clicked on the button once before and then sees the button again*/
+  /* if we dont style a link at all, it will appear blue in the beginning and then once we click on it once, 
+  when we see it again, then it will be purple. (default styling of the links in most of the browsers; 
+  we dont want this, we want the visited state to look exactly like the link state,so we put them together)*/
+  /* Inline block element is treated as if it was text. (aligned in the centre) */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* padding at top and bottom: 15px; and left and right: 40px */
+    padding: 1.5rem 4rem;
+    /* block model works on it as if it was just a normal block element;
+    so we always do this if we want to give some paddings or some heights or width to elements. */
+    display: inline-block;
+    border-radius: 10rem;
+    /*There are two types of animations. The first one is to simply use the transition property, which is the easy one,
+   and the more complex one is the method we used for moveInLeft and moveInRight,
+   which was to really specify the steps of the animations with the keyframes at-rule.*/
+
+    /* all the properties are enabled to be animated(animation), then we can also specify a time that we want.*/
+    transition: all 0.2s;
+
+    position: relative;
+
+    font-size: $default-font-size;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /* xDirection, yDirection, Blur, Color of shadow */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* When we click the element then that's called the active state.*/
+  /* -1px is in relation to the initial state, so to the link state, not to the hover.*/
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  /* we're going to have multiple colors for the button and so in the white button, text will dark grey,
+  but in the green button, it will probably be white.*/
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    /* add an element that looks exactly like the button that we already have, but we put it behind the button.
+  and when we hover out of the button, then this hidden pseudo element basically goes back behind the button. */
+
+    &::after {
+      background-color: $color-white;
+      /* color: #777; */
+    }
+  }
+
+  /* after pseudo element : adds like a virtual element right after the element that we're selecting */
+  /* after pseudo element is basically treated like a child of the button; height: 100% means 100% height of the button*/
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* to put it behind the button 
+    absolute positioning needs to have a reference
+    and that reference is the first element 
+    with the relative position that it can find */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* z-index defines the position of the elements is they are one on top of another. */
+    z-index: -1;
+
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* it will automatically apply the styles of the 0% before the animation starts */
+    animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

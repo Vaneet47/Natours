@@ -1,0 +1,303 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* it changes the box model so that the borders and paddings are no longer added to the total width
+  or the total height that we specify for a box */
+  /* forcing inheritance */
+  box-sizing: inherit; }
+
+/* root font size */
+/* if the user changes the default font-size manually( let's say zoom in the website), our website should adjust automatically */
+/* percentage of the font size given by the browser (usually 16px => that's why 62.5%) that is 10 px*/
+/* rem not supported by internet explorer 9 and below */
+html {
+  font-size: 62.5%; }
+
+/* Project-wide font definitions */
+/* inheritance| body element is the parent element of all the other element*/
+body {
+  box-sizing: border-box; }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  /* means its 1.7 times bigger than the predefined line height */
+  line-height: 1.7;
+  color: #777;
+  /* this is not the case of inheritance because padding is not getting inherited.
+    All that's happening is it's applying a 30px padding around the entire body */
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* To prevent the animation going slightly upwards/shaking (no one knows why this happens)
+    determines if the back part of the element when we transform it is visible or hidden for the user. */
+  backface-visibility: hidden;
+  /* for separation between heading and button */
+  margin-bottom: 6rem;
+  /* TO DISPLAY HEADING-PRIMARY-SUB BELOW HEADING-PRIMARY-MAIN 
+  
+  Display them both as block level elements. 
+  Because block elements occupy the entire width that they have availble.
+  And they create line breaks after and before them.*/ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /* animation will start faster and it will become slower by the end 
+    ease-in: Slower towards the beginning and faster by the end.*/
+    animation-timing-function: ease-out;
+    /* animation-iteration-count: 3; */
+    /* animation-delay: 3s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    animation: moveInRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: all 0.2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.btn {
+  /* :link is a pseudo-class, and pseudo-classes are a special state of a selector.
+  So this link here is a state of the button selector.
+  we use pseudo classes to style elements under a special condition.*/
+  /*visited: this is the state when the user has already clicked on the button once before and then sees the button again*/
+  /* if we dont style a link at all, it will appear blue in the beginning and then once we click on it once, 
+  when we see it again, then it will be purple. (default styling of the links in most of the browsers; 
+  we dont want this, we want the visited state to look exactly like the link state,so we put them together)*/
+  /* Inline block element is treated as if it was text. (aligned in the centre) */
+  /* When we click the element then that's called the active state.*/
+  /* -1px is in relation to the initial state, so to the link state, not to the hover.*/
+  /* we're going to have multiple colors for the button and so in the white button, text will dark grey,
+  but in the green button, it will probably be white.*/
+  /* after pseudo element : adds like a virtual element right after the element that we're selecting */
+  /* after pseudo element is basically treated like a child of the button; height: 100% means 100% height of the button*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* padding at top and bottom: 15px; and left and right: 40px */
+    padding: 1.5rem 4rem;
+    /* block model works on it as if it was just a normal block element;
+    so we always do this if we want to give some paddings or some heights or width to elements. */
+    display: inline-block;
+    border-radius: 10rem;
+    /*There are two types of animations. The first one is to simply use the transition property, which is the easy one,
+   and the more complex one is the method we used for moveInLeft and moveInRight,
+   which was to really specify the steps of the animations with the keyframes at-rule.*/
+    /* all the properties are enabled to be animated(animation), then we can also specify a time that we want.*/
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /* xDirection, yDirection, Blur, Color of shadow */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777;
+    /* add an element that looks exactly like the button that we already have, but we put it behind the button.
+  and when we hover out of the button, then this hidden pseudo element basically goes back behind the button. */ }
+    .btn--white::after {
+      background-color: #fff;
+      /* color: #777; */ }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* to put it behind the button 
+    absolute positioning needs to have a reference
+    and that reference is the first element 
+    with the relative position that it can find */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* z-index defines the position of the elements is they are one on top of another. */
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* it will automatically apply the styles of the 0% before the animation starts */
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all 0.2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    position: absolute;
+    z-index: 10;
+    transition: all 0.2s;
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc( (100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( (2 * (100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( ((100% - 3 * 6rem) / 2) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( (3 * (100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+/* formatting the header element */
+.header {
+  /* at every point the height of this box is 95% of viewport height.*/
+  height: 95vh;
+  background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* whatever the width of the viewport or the element, it'll always try to fit the element inside of the box */
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* 40px from the parent element; parent element is the reference which has its position set to relative */
+  /* width will get automatically decided by the browser */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    /* they are in relation to the parent element;
+    so 50% of the parent element is where the text box was located to the left side before translation */
+    top: 40%;
+    left: 50%;
+    /*translating the entire box; these 50% are no longer in relation to the parent element, but of the element itself*/
+    transform: translate(-50%, -50%);
+    /* aligns the button in centre */
+    text-align: center; }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }

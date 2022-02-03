@@ -1,0 +1,25 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* it changes the box model so that the borders and paddings are no longer added to the total width
+  or the total height that we specify for a box */
+  /* forcing inheritance */
+  box-sizing: inherit;
+}
+
+/* root font size */
+/* if the user changes the default font-size manually( let's say zoom in the website), our website should adjust automatically */
+/* percentage of the font size given by the browser (usually 16px => that's why 62.5%) that is 10 px*/
+/* rem not supported by internet explorer 9 and below */
+html {
+    // This defines what 1rem is
+  font-size: 62.5%;
+}
+
+/* Project-wide font definitions */
+/* inheritance| body element is the parent element of all the other element*/
+body {
+  box-sizing: border-box;
+}
