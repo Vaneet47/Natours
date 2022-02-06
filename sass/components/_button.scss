@@ -63,6 +63,19 @@
     }
   }
 
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    /* add an element that looks exactly like the button that we already have, but we put it behind the button.
+  and when we hover out of the button, then this hidden pseudo element basically goes back behind the button. */
+
+    &::after {
+      background-color: $color-primary;
+      /* color: #777; */
+    }
+  }
+
   /* after pseudo element : adds like a virtual element right after the element that we're selecting */
   /* after pseudo element is basically treated like a child of the button; height: 100% means 100% height of the button*/
   &::after {
