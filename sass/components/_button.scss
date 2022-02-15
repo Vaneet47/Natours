@@ -8,6 +8,7 @@
   when we see it again, then it will be purple. (default styling of the links in most of the browsers; 
   we dont want this, we want the visited state to look exactly like the link state,so we put them together)*/
   /* Inline block element is treated as if it was text. (aligned in the centre) */
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -28,6 +29,10 @@
     position: relative;
 
     font-size: $default-font-size;
+
+    // Change for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -43,7 +48,9 @@
 
   /* When we click the element then that's called the active state.*/
   /* -1px is in relation to the initial state, so to the link state, not to the hover.*/
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
