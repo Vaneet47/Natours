@@ -1,9 +1,16 @@
 // clearfix append a pseudo element after the element which will then clear these floats.
 @mixin clearfix {
   &::after {
-       content:"";//need to specify this content property otherwise a pseudo element will simply not appear on the page
-       // we want it empty because we don't want to see this element on the page.
-       display: table;
-       clear : both;//this will clear both floats, so both float left and float right.
+    content: ""; //need to specify this content property otherwise a pseudo element will simply not appear on the page
+    // we want it empty because we don't want to see this element on the page.
+    display: table;
+    clear: both; //this will clear both floats, so both float left and float right.
   }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
