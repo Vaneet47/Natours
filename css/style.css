@@ -1,3 +1,19 @@
+/*
+0 - 600px:         Phone
+600px - 900px:     Tablet in Potrait
+900px - 1200px:    Tablet in Landscape
+[1200px - 1800px]: where our normal styles apply
+1800px + :         Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+use ems instead of rems for media queries
+*/
 *,
 *::after,
 *::before {
@@ -14,6 +30,15 @@
 /* rem not supported by internet explorer 9 and below */
 html {
   font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 /* Project-wide font definitions */
 /* inheritance| body element is the parent element of all the other element*/
