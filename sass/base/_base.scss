@@ -37,4 +37,9 @@ html {
 /* inheritance| body element is the parent element of all the other element*/
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0rem;
+  }
 }
