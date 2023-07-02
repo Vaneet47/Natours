@@ -1,10 +1,10 @@
 {
-  "name": "natours",
+  "name": "Serene Himachal",
   "version": "1.0.0",
-  "description": "Landing page for natours",
+  "description": "Landing page for Serene Himachal",
   "main": "index.js",
   "scripts": {
-    "compile:sass":"node-sass sass/main.scss css/style.css -w"
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
   },
   "author": "Vaneet",
   "license": "ISC",
